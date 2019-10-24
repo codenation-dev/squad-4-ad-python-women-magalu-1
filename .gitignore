@@ -1,0 +1,7 @@
+*.pyc
+*.sqlite3
+
+/centralerros/api/__pycache__/
+/centralerros/centralerros/__pycache__/
+docs/_build
+env/

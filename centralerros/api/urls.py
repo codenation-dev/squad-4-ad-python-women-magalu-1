@@ -11,7 +11,6 @@ router.register(r'agents', views.AgentApiViewSet)
 router.register(r'events', views.EventApiViewSet)
 
 urlpatterns = [
-    path('', include(router.urls)),
     path('admin/', admin.site.urls),
     path('groups/', views.GroupListOnlyAPIView.as_view()),
     path('environments/', views.EnvironmentListOnlyAPIView.as_view()),
