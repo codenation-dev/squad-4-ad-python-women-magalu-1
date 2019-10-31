@@ -6,9 +6,9 @@ from rest_framework import generics
 from rest_framework.views import APIView
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import authentication_classes, permission_classes
 
 from api.serializers import (
-    GroupModelSerializer,
     UserModelSerializer,
     EnvironmentModelSerializer,
     AgentModelSerializer,
@@ -16,23 +16,14 @@ from api.serializers import (
     EventModelSerializer
 )
 
-from api.models import User, Group, Environment, Agent, Level, Event
+from api.models import User, Environment, Agent, Level, Event
 
+@authentication_classes([])
+@permission_classes([])
 class UserApiViewSet(viewsets.ModelViewSet):
-    authentication_classes = [TokenAuthentication]
-    permission_classes = [IsAuthenticated]
-
     queryset = User.objects.all()
     serializer_class = UserModelSerializer
 
-
-class GroupListOnlyAPIView(mixins.ListModelMixin, generics.GenericAPIView):
-    queryset = Group.objects.all()
-    serializer_class = GroupModelSerializer
-
-    def get(self, request, *args, **kwargs):
-        return self.list(request, *args, **kwargs)
-        
 
 class EnvironmentListOnlyAPIView(mixins.ListModelMixin, generics.GenericAPIView):
     authentication_classes = [TokenAuthentication]

@@ -14,7 +14,17 @@ INSTALLED_APPS = [
     'api.apps.ApiConfig',
     'rest_framework',
     'rest_framework.authtoken',
+    'rest_auth',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -84,3 +94,6 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 STATIC_URL = '/static/'
+
+AUTH_USER_MODEL = 'api.User'
+

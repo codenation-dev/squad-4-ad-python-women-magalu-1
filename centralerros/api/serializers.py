@@ -1,18 +1,12 @@
 from rest_framework import serializers
 
-from api.models import User, Group, Environment, Agent, Level, Event
-
-
-class GroupModelSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Group
-        fields = ['id', 'name']
+from api.models import User, Environment, Agent, Level, Event
 
 
 class UserModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'name', 'email', 'password', 'last_login', 'group']
+        fields = ['id', 'name', 'email', 'password', 'last_login']
 
 
 class EnvironmentModelSerializer(serializers.ModelSerializer):
